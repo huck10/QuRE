@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QuRe - Empower Learning</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        h2 {
+    color: #007ACC;
+}
+      
+
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <a href="index.html" class="logo-img"></a>
+        </div>
+        <nav class="navbar">
+            
+        
+            <div class="menu">
+                <a href="index.html">Home</a>
+        
+                <div class="dropdown">
+                    <a href="#">About</a>
+                    <div class="dropdown-content">
+                        <a href="about.html">About Us</a>
+                        <a href="team.html">Meet the Team</a>
+                        <a href="contact.html">Contact Us</a>
+                    </div>
+                </div>
+        
+                <div class="dropdown">
+                    <a href="#">Tools</a>
+                    <div class="dropdown-content">
+                        <a href="subjects.html">Take Quiz</a>
+                        <a href="quiz-maker.html">Make Quiz</a>
+                        <a href="reviewer.html">Reviewer</a>
+                        <a href="manage-quizzes.html">Manage Quizzes</a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section id="hero">
+                <a href="#"><img src="Q (2).png" alt="QuRE Logo" style="height: 400px;"></a>
+                <p>Do you want to learn about the major subjects of BSEMC? or would you like to review some lessons? Here is QuRE, a learning site for BS Entertainment Multimedia Computing.</p>
+        </section>
+
+        <section id="startLearning">
+            <h2>Start Learning</h2>
+            <div class="steps">
+                <div class="container">
+                    <img src="quiz.png" alt="Quiz Maker Image" class="step-img">
+                    <h3>Quiz maker</h3>
+                    <p>The Quiz Maker is an intuitive feature that enables teachers and quiz creators to design engaging quizzes by specifying a title, setting the number of questions, and inputting questions with their corresponding answers. It streamlines the quiz creation process, saving time and ensuring a seamless experience.</p>
+                    <button onclick="window.location.href='quiz-maker.html'" aria-label="Create a quiz">Make Quiz</button>
+                </div>
+                <div class="container">
+                    <img src="Take.png" alt="Take Quiz Image" class="step-img">
+                    <h3>Take quiz</h3>
+                    <p>Allows students to access and attempt quizzes created by teachers or quiz creators. It provides a user-friendly interface where students can select a quiz, answer questions, and receive immediate feedback on their performance. This feature is designed to enhance learning by enabling students to test their knowledge, identify areas for improvement, and track progress over time.</p>
+                    <button onclick="window.location.href='subjects.html'" aria-label="Log in to take quizzes">Take Quiz</button>
+                </div>
+                <div class="container">
+                    <img src="Review.png" alt="Reviewer Image" class="step-img">
+                    <h3>Reviewer</h3>
+                    <p>Designed to help students effectively prepare and reinforce their knowledge. It provides access to past quizzes, allowing students to review questions, correct answers, and explanations where available. This feature aims to support continuous learning by enabling students to revisit challenging topics, track their progress, and improve their understanding through self-assessment and repetition.</p>
+                    <button onclick="window.location.href='reviewer.html'" aria-label="Track your progress">Reviewer</button>
+                </div>
+            </div>
+        </section>
+        
+
+        <section id="whyQuRe">
+            <h2>Why QuRe?</h2>
+            <div class="content-container">
+                <ul>
+                    <li>
+                        <button onclick="toggleDescription(this)">Accessibility</button>
+                        <div class="description">
+                            <strong>Accessibility</strong>
+                            <p>QuRe ensures a seamless and user-friendly experience for everyone, including those with accessibility needs, by providing tools that adapt to different learning styles and needs.</p>
+                        </div>
+                    </li>
+                    <li>
+                        <button onclick="toggleDescription(this)">Engagement</button>
+                        <div class="description">
+                            <strong>Engagement</strong>
+                            <p>With interactive features, QuRe keeps users engaged through dynamic quizzes and a rewarding learning environment.</p>
+                        </div>
+                    </li>
+                    <li>
+                        <button onclick="toggleDescription(this)">Comprehensive</button>
+                        <div class="description">
+                            <strong>Comprehensive</strong>
+                            <p>QuRe offers a wide range of features to create and manage quizzes, supporting both simple and complex educational assessments.</p>
+                        </div>
+                    </li>
+                    <li>
+                        <button onclick="toggleDescription(this)">Customization</button>
+                        <div class="description">
+                            <strong>Customization</strong>
+                            <p>QuRe allows users to customize quizzes, settings, and analytics according to their unique needs and preferences.</p>
+                        </div>
+                    </li>
+                    <li>
+                        <button onclick="toggleDescription(this)">Analytics</button>
+                        <div class="description">
+                            <strong>Analytics</strong>
+                            <p>With detailed analytics, QuRe provides insights into student performance, quiz results, and learning outcomes to help improve educational outcomes.</p>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+        <section id="faq">
+            <h2>FAQs</h2>
+            <div class="faq-item">
+                <h3>What is QuRE?</h3>
+                <p>QuRE is a quiz and review platform for BSEMC students.</p>
+            </div>
+            <div class="faq-item">
+                <h3>Who can create quizzes?</h3>
+                <p>Teachers can create quizzes for students to enhance learning.</p>
+            </div>
+            <div class="faq-item">
+                <h3>Can students take quizzes?</h3>
+                <p>Yes, students can take quizzes on selected subjects.</p>
+            </div>
+            <div class="faq-item">
+                <h3>How to access quizzes?</h3>
+                <p>Students can choose subjects and start quizzing!</p>
+            </div>
+        </section>
+        
+
+    </main>
+        <script>
+            function toggleDescription(button) {
+                const description = button.nextElementSibling;
+                if (description.style.display === 'block') {
+                    description.style.display = 'none';
+                } else {
+                    description.style.display = 'block';
+                }
+            }
+        </script>
+        
+    
+        <section id="info">
+            <div class="contact">
+                <h3>Contact Us</h3>
+                <p>Naga City, Philippines</p>
+                <p>+639123456789</p>
+                <p>QuRE.support@gmail.com</p>
+            </div>
+            <div class="about">
+                <h3>About Us</h3>
+                <p><a href="about.html">About QuRE</a></p>
+                <p><a href="Team.html">Meet the Team</a></p>
+            </div>
+        </section>
+        <footer>
+            <div class="footer-content">
+                <p>&copy; 2024 QuRe. All Rights Reserved.</p>
+                <ul class="socials">
+                    <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+                    <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+                    <li><a href="#"><i class="fab fa-instagram"></i></a></li>
+                    <li><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
+                </ul>
+            </div>
+        </footer>
+        
+</body>
+</html>

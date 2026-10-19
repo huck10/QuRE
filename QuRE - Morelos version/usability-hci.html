@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Usability, HCI and User Interactive Design Quiz</title>
+    <link rel="stylesheet" href="styles.css">
+
+    <style>
+        body, html {
+            background-color: #f0f8ff; /* Subtle off-white */
+            font-family: 'Arial', sans-serif;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .logo img {
+            height: 60px;
+        }
+
+        section#web-systems-quizzes {
+            padding: 20px;
+            background-color: #007ACC;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            margin: 20px auto;
+            max-width: 800px;
+            overflow: hidden;
+        }
+
+        .quiz-item {
+            background-color: #e8f4fd;
+            padding: 15px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .quiz-item h3 {
+            margin: 0;
+        }
+
+        .take-quiz-btn {
+            background-color: #1e90ff;
+            color: white;
+            border: none;
+            padding: 8px 12px;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        .take-quiz-btn:hover {
+            background-color: #0056b3;
+        }
+
+        .question {
+            margin-bottom: 15px;
+        }
+
+        .question p {
+            margin: 0 0 5px;
+        }
+
+        label {
+            display: block;
+            margin: 5px 0;
+        }
+
+        input[type="radio"] {
+            margin-right: 10px;
+        }
+
+        #submit-quiz {
+            display: none;
+            background-color: #28a745;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+            margin-top: 20px;
+        }
+
+        #submit-quiz:hover {
+            background-color: #218838;
+        }
+
+        #result {
+            display: none;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <a href="index.html" class="logo-img"></a>
+        </div>
+        <nav class="navbar">
+            
+        
+            <div class="menu">
+                <a href="index.html">Home</a>
+        
+                <div class="dropdown">
+                    <a href="#">About</a>
+                    <div class="dropdown-content">
+                        <a href="about.html">About Us</a>
+                        <a href="team.html">Meet the Team</a>
+                        <a href="contact.html">Contact Us</a>
+                    </div>
+                </div>
+        
+                <div class="dropdown">
+                    <a href="#">Tools</a>
+                    <div class="dropdown-content">
+                        <a href="subjects.html">Take Quiz</a>
+                        <a href="quiz-maker.html">Make Quiz</a>
+                        <a href="reviewer.html">Reviewer</a>
+                        <a href="manage-quizzes.html">Manage Quizzes</a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <section id="web-systems-quizzes">
+        <h2>Usability, HCI, and User Interactive Design Quizzes</h2>
+        <div id="quiz-list">
+            <!-- Quizzes will be displayed here -->
+        </div>
+        <div id="quiz-container">
+            <!-- Quiz will be loaded here -->
+        </div>
+        <button id="submit-quiz" style="display:none;">Submit Quiz</button>
+        <div id="result" style="display:none;">
+            <h3>Your Result: <span id="score">0</span> / <span id="total-questions">0</span></h3>
+        </div>
+    </section>
+
+    <section id="info">
+        <div class="contact">
+            <h3>Contact Us</h3>
+            <p>Naga City, Philippines</p>
+            <p>+639123456789</p>
+            <p>QuRE.support@gmail.com</p>
+        </div>
+        <div class="about">
+            <h3>About Us</h3>
+            <p><a href="about.html">About QuRE</a></p>
+            <p><a href="Team.html">Meet the Team</a></p>
+        </div>
+    </section>
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2024 QuRe. All Rights Reserved.</p>
+            <ul class="socials">
+                <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+                <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+                <li><a href="#"><i class="fab fa-instagram"></i></a></li>
+                <li><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
+            </ul>
+        </div>
+    </footer>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            let selectedSubject = localStorage.getItem('selectedSubject'); // Get the selected subject from localStorage
+            let quizzes = JSON.parse(localStorage.getItem('quizzes')) || [];
+            let quizList = document.getElementById('quiz-list');
+            let quizContainer = document.getElementById('quiz-container');
+            let submitButton = document.getElementById('submit-quiz');
+            let resultSection = document.getElementById('result');
+
+            // Filter quizzes based on the selected subject
+            let filteredQuizzes = quizzes.filter(quiz => quiz.quizSubject === selectedSubject);
+            
+            if (filteredQuizzes.length === 0) {
+                quizList.innerHTML = "<p>No quizzes available for this subject.</p>";
+            } else {
+                filteredQuizzes.forEach(quiz => {
+                    let quizItem = document.createElement('div');
+                    quizItem.classList.add('quiz-item');
+                    quizItem.innerHTML = ` 
+                        <h3>${quiz.quizTitle}</h3>
+                        <button class="take-quiz-btn" onclick="startQuiz('${quiz.quizTitle}')">Take Quiz</button>
+                    `;
+                    quizList.appendChild(quizItem);
+                });
+            }
+
+            // Function to start the quiz
+            window.startQuiz = function(quizTitle) {
+                let quiz = quizzes.find(q => q.quizTitle === quizTitle);
+                if (quiz) {
+                    // Save the quiz to localStorage for use during quiz submission
+                    localStorage.setItem('currentQuiz', JSON.stringify(quiz));
+                    displayQuiz(quiz);
+                }
+            };
+
+            // Function to display the quiz
+            function displayQuiz(quiz) {
+                let quizHTML = `<h3>${quiz.quizTitle}</h3>`;
+                quiz.questions.forEach((question, index) => {
+                    quizHTML += `
+                        <div class="question">
+                            <p>${index + 1}. ${question.question}</p>
+                            ${question.options.map((option, i) => `
+                                <label>
+                                    <input type="radio" name="question${index}" value="${i + 1}">
+                                    ${option}
+                                </label><br>
+                            `).join('')}
+                        </div>
+                    `;
+                });
+                quizContainer.innerHTML = quizHTML;
+                submitButton.style.display = 'inline-block';
+                resultSection.style.display = 'none';
+            }
+
+            // Handle quiz submission
+            submitButton.addEventListener('click', function() {
+                // Retrieve the current quiz from localStorage
+                let quiz = JSON.parse(localStorage.getItem('currentQuiz'));
+                if (!quiz) return; // If no quiz is found, return
+
+                let score = 0;
+
+                // Iterate over each question and check answers
+                quiz.questions.forEach((question, index) => {
+                    // Find the selected answer for the current question
+                    let selectedOption = document.querySelector(`input[name="question${index}"]:checked`);
+                    if (selectedOption) {
+                        let selectedValue = parseInt(selectedOption.value);
+                        if (selectedValue === question.correctOption) {
+                            score++;
+                        }
+                    }
+                });
+
+                // Display the result
+                let totalQuestions = quiz.questions.length;
+                document.getElementById('score').textContent = score;
+                document.getElementById('total-questions').textContent = totalQuestions;
+                resultSection.style.display = 'block';
+            });
+        });
+    </script>
+</body>
+</html>

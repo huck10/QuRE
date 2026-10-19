@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QuizPro - Take a Quiz</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<style>
+h2 {
+    color:#007ACC;
+    font-size: 2rem;
+    margin: 5px 0;
+}
+
+
+    #subjects {
+        padding: 20px;
+        background-color: white;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        margin: 20px auto;
+        max-width: 600px;
+        text-align: center;
+        height: 750px;
+        align-items: center;
+        justify-content: center;
+    }
+
+  
+
+    .subject-buttons {
+        padding-top: 30px;
+        display: flex;
+        justify-content: center;
+        gap: 10px;
+    }
+
+    .subject-btn {
+        padding: 10px 20px;
+        background-color: #007bff;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+
+    .subject-btn:hover {
+        background-color: #0056b3;
+    }
+
+</style>
+<body>
+    <header>
+        <div class="logo">
+            <a href="index.html" class="logo-img"></a>
+        </div>
+        <nav class="navbar">
+            
+        
+            <div class="menu">
+                <a href="index.html">Home</a>
+        
+                <div class="dropdown">
+                    <a href="#">About</a>
+                    <div class="dropdown-content">
+                        <a href="about.html">About Us</a>
+                        <a href="team.html">Meet the Team</a>
+                        <a href="contact.html">Contact Us</a>
+                    </div>
+                </div>
+        
+                <div class="dropdown">
+                    <a href="#">Tools</a>
+                    <div class="dropdown-content">
+                        <a href="subjects.html">Take Quiz</a>
+                        <a href="quiz-maker.html">Make Quiz</a>
+                        <a href="reviewer.html">Reviewer</a>
+                        <a href="manage-quizzes.html">Manage Quizzes</a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <section id="subjects">
+        <h2>Choose a Subject to Take a Quiz</h2>
+        <div class="subject-buttons">
+            <button class="subject-btn" data-subject="Computer Programming">Computer Programming</button>
+            <button class="subject-btn" data-subject="Usability, HCI and User Interactive Design">Usability, HCI and User Interactive Design</button>
+            <button class="subject-btn" data-subject="Web Systems and Technologies">Web Systems and Technologies</button>
+        </div>
+    </section>
+
+    <section id="info">
+        <div class="contact">
+            <h3>Contact Us</h3>
+            <p>Naga City, Philippines</p>
+            <p>+639123456789</p>
+            <p>QuRE.support@gmail.com</p>
+        </div>
+        <div class="about">
+            <h3>About Us</h3>
+            <p><a href="about.html">About QuRE</a></p>
+            <p><a href="Team.html">Meet the Team</a></p>
+        </div>
+    </section>
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2024 QuRe. All Rights Reserved.</p>
+            <ul class="socials">
+                <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+                <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+                <li><a href="#"><i class="fab fa-instagram"></i></a></li>
+                <li><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
+            </ul>
+        </div>
+    </footer>
+
+    <script>
+        // Wait until the DOM is loaded
+        document.addEventListener('DOMContentLoaded', function() {
+            let subjectButtons = document.querySelectorAll('.subject-btn');
+
+            // Event listener for each subject button
+            subjectButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    let selectedSubject = button.getAttribute('data-subject');
+
+                    // Store the selected subject in localStorage
+                    localStorage.setItem('selectedSubject', selectedSubject);
+
+                    // Redirect to the appropriate subject page
+                    if (selectedSubject === "Computer Programming") {
+                        window.location.href = 'computer-programming.html';
+                    } else if (selectedSubject === "Usability, HCI and User Interactive Design") {
+                        window.location.href = 'usability-hci.html'; // Assuming this page exists
+                    } else if (selectedSubject === "Web Systems and Technologies") {
+                        window.location.href = 'web-systems.html'; // Assuming this page exists
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>

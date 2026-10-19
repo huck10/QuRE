@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reviewer</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: #f9f9f9;
+        }
+        main {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            padding: 20px;
+            justify-content: center;
+        }
+        .subject {
+            background-color: white;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            width: calc(33% - 20px); /* Adjusting width for smaller screens */
+            max-width: 300px;
+            padding: 15px;
+            text-align: center;
+        }
+        .subject h2 {
+            color: #007ACC;
+            margin-bottom: 10px;
+        }
+        .lesson ul {
+            list-style: none;
+            padding: 0;
+        }
+        .lesson li {
+            background-color: #e6f7ff;
+            margin: 5px 0;
+            padding: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        .lesson li:hover {
+            background-color: #ccefff;
+        }
+        .content {
+    background-color: white;
+    border: 1px solid #ddd;
+    border-radius: 20px;
+    flex: 1 1 auto; /* Allow flexible growth */
+    padding: 20px;
+    text-align: center;
+    width: 100%; /* Make it span the full width of the container */
+}
+
+@media (min-width: 2000px) {
+    .content {
+        max-width: 2000px; /* Increased max-width */
+    }
+}
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <a href="index.html" class="logo-img"></a>
+        </div>
+        <nav class="navbar">
+            
+        
+            <div class="menu">
+                <a href="index.html">Home</a>
+        
+                <div class="dropdown">
+                    <a href="#">About</a>
+                    <div class="dropdown-content">
+                        <a href="about.html">About Us</a>
+                        <a href="team.html">Meet the Team</a>
+                        <a href="contact.html">Contact Us</a>
+                    </div>
+                </div>
+        
+                <div class="dropdown">
+                    <a href="#">Tools</a>
+                    <div class="dropdown-content">
+                        <a href="subjects.html">Take Quiz</a>
+                        <a href="quiz-maker.html">Make Quiz</a>
+                        <a href="reviewer.html">Reviewer</a>
+                        <a href="manage-quizzes.html">Manage Quizzes</a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <main>
+         <!-- Content Display Section -->
+         <div class="content" id="content-area">
+            <p>Select a lesson to see more details.</p>
+        </div>
+
+
+        <!-- Subjects Section -->
+        <div class="subject">
+            <h2>Programming</h2>
+            <div class="lesson">
+                <h3>Lessons:</h3>
+                <ul>
+                    <li onclick="showContent('Programming', 'Data Types')">Data Types</li>
+                    <li onclick="showContent('Programming', 'Operators')">Operators</li>
+                    <li onclick="showContent('Programming', 'Control Structures')">Control Structures</li>
+                    <li onclick="showContent('Programming', 'Functions and Methods')">Functions and Methods</li>
+                    <li onclick="showContent('Programming', 'Object-Oriented Programming')">Object-Oriented Programming</li>
+                    <li onclick="showContent('Programming', 'Data Structures')">Data Structures</li>
+                    <li onclick="showContent('Programming', 'Algorithms')">Algorithms</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="subject">
+            <h2>USABILITY, HCI and USER INTERACTION DESIGN</h2>
+            <div class="lesson">
+                <h3>Lessons:</h3>
+                <ul>
+                    <li onclick="showContent('HCI', 'Usability, HCI and User Interation Design')">Usability, HCI and User Interation Design</li>
+                    <li onclick="showContent('HCI', 'User-Centered Design Principles')">User-Centered Design Principles</li>
+                    <li onclick="showContent('HCI', 'Accessibility and Usability')">Accessibility and Usability</li>
+                    <li onclick="showContent('HCI', 'User Interface Design Patterns')">User Interface Design Patterns</li>
+                    <li onclick="showContent('HCI', 'Cognitive Psychology in HCI')">Cognitive Psychology in HCI</li>
+                    <li onclick="showContent('HCI', 'User Experience Research Methods')">User Experience Research Methods</li>
+                    <li onclick="showContent('HCI', 'Human-Computer Interaction Theories')">Human-Computer Interaction Theories</li>
+                    <li onclick="showContent('HCI', 'Ethics in HCI Design')">Ethics in HCI Design</li>
+                    <li onclick="showContent('HCI', 'Prototyping and Usability Testing')">Prototyping and Usability Testing</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="subject">
+            <h2>Web Development</h2>
+            <div class="lesson">
+                <h3>Lessons:</h3>
+                <ul>
+                    <li onclick="showContent('Web Development', 'HTML and CSS Basics')">HTML and CSS Basics</li>
+                    <li onclick="showContent('Web Development', 'JavaScript Fundamentals')">JavaScript Fundamentals</li>
+                    <li onclick="showContent('Web Development', 'Responsive Design')">Responsive Design</li>
+                    <li onclick="showContent('Web Development', 'Version Control with Git')">Version Control with Git</li>
+                    <li onclick="showContent('Web Development', 'Front-End Frameworks')">Front-End Frameworks</li>
+                    <li onclick="showContent('Web Development', 'Back-End Development')">Back-End Development</li>
+                    <li onclick="showContent('Web Development', 'Project Building')">Project Building</li>
+                </ul>
+            </div>
+        </div>
+        
+    </main>
+
+    <section id="info">
+        <div class="contact">
+            <h3>Contact Us</h3>
+            <p>Naga City, Philippines</p>
+            <p>+639123456789</p>
+            <p>QuRE.support@gmail.com</p>
+        </div>
+        <div class="about">
+            <h3>About Us</h3>
+            <p><a href="about.html">About QuRE</a></p>
+            <p><a href="Team.html">Meet the Team</a></p>
+        </div>
+    </section>
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2024 QuRe. All Rights Reserved.</p>
+            <ul class="socials">
+                <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+                <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+                <li><a href="#"><i class="fab fa-instagram"></i></a></li>
+                <li><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
+            </ul>
+        </div>
+    </footer>
+
+    <script>
+       // Content data for each lesson
+const lessonDetails = {
+    'Data Types': {
+        description: 'Explore various data types in programming, such as integers, floats, strings, booleans, and more.',
+        subtopics: {
+            'Basics of Variables': {
+                info: 'Variables store data values, essential for computations.',
+                example: 'int x = 10;'
+            },
+            'Casting': {
+                info: 'Converting data types from one to another (e.g., from int to float).',
+                example: 'float f = (float)intVar;'
+            },
+            'Type Conversion': {
+                info: 'Automatically converting between compatible data types.',
+                example: 'int num = 5; float decimal = num;'
+            }
+        }
+    },
+    'Operators': {
+        description: 'Understand different types of operators used in programming, including arithmetic, comparison, and logical operators.',
+        subtopics: {
+            'Arithmetic Operators': {
+                info: 'Used to perform basic mathematical calculations.',
+                example: 'int result = a + b;'
+            },
+            'Comparison Operators': {
+                info: 'Used to compare two values and return a boolean result.',
+                example: 'bool isEqual = a == b;'
+            },
+            'Logical Operators': {
+                info: 'Used to combine multiple boolean expressions.',
+                example: 'bool result = (a > 5) && (b < 10);'
+            }
+        }
+    },
+    'Control Structures': {
+        description: 'Learn about conditional statements and loops used to control program flow.',
+        subtopics: {
+            'Conditional Statements': {
+                info: 'Statements that execute code based on a condition.',
+                example: 'if(a > b) { result = a; } else { result = b; }'
+            },
+            'Looping Constructs': {
+                info: 'Used to execute a block of code multiple times.',
+                example: 'for(int i = 0; i < 10; i++) { sum += i; }'
+            },
+            'Nested Loops': {
+                info: 'Loops inside other loops.',
+                example: 'for(int i = 0; i < 3; i++) { for(int j = 0; j < 3; j++) { matrix[i][j] = i * j; } }'
+            }
+        }
+    },
+    'Functions and Methods': {
+        description: 'Study how functions are defined, called, and managed, including methods for specific tasks.',
+        subtopics: {
+            'Function Definitions': {
+                info: 'Defines a block of reusable code.',
+                example: 'void printHello() { cout << "Hello"; }'
+            },
+            'Return Values': {
+                info: 'Functions can return a value after execution.',
+                example: 'int add(int x, int y) { return x + y; }'
+            },
+            'Parameters': {
+                info: 'Functions can accept input values to perform operations.',
+                example: 'void multiply(int num) { result = num * 2; }'
+            }
+        }
+    },
+    'Object-Oriented Programming': {
+        description: 'Learn about classes, inheritance, and polymorphism to structure complex applications effectively.',
+        subtopics: {
+            'Classes and Objects': {
+                info: 'Blueprints for creating objects.',
+                example: 'class Dog { string breed; }; Dog myDog;'
+            },
+            'Inheritance': {
+                info: 'Allows a new class to inherit properties and methods from an existing class.',
+                example: 'class Puppy : public Dog { };'
+            },
+            'Polymorphism': {
+                info: 'A single function can perform different tasks depending on its context.',
+                example: 'void speak(Animal a) { a.makeSound(); }'
+            }
+        }
+    },
+    'Data Structures': {
+        description: 'Explore arrays, lists, dictionaries, sets, and how they are utilized in building efficient data management solutions.',
+        subtopics: {
+            'Arrays': {
+                info: 'A collection of elements stored in contiguous memory locations.',
+                example: 'int arr[5] = {1, 2, 3, 4, 5};'
+            },
+            'Linked Lists': {
+                info: 'A linear data structure where each element points to the next.',
+                example: 'struct Node { int data; Node* next; };'
+            },
+            'Stacks and Queues': {
+                info: 'Used to store data in a last-in-first-out (LIFO) or first-in-first-out (FIFO) order.',
+                example: 'Stack<int> s; s.push(5);'
+            }
+        }
+    },
+    'Algorithms': {
+        description: 'Understand searching, sorting, and recursion techniques to solve computational problems.',
+        subtopics: {
+            'Sorting Algorithms': {
+                info: 'Organize data efficiently.',
+                example: 'void bubbleSort(int arr[], int n) { ... }'
+            },
+            'Search Algorithms': {
+                info: 'Find elements in data structures.',
+                example: 'int linearSearch(int arr[], int n, int x) { ... }'
+            },
+            'Recursion': {
+                info: 'Functions that call themselves.',
+                example: 'int factorial(int n) { if (n == 0) return 1; return n * factorial(n - 1); }'
+            }
+        }
+    },
+    'User-Centered Design Principles': {
+        description: 'Understand the fundamental principles of creating user-friendly designs.',
+        subtopics: {
+            'User Research': {
+                info: 'Gathering insights from users to understand their needs.',
+                example: 'Surveys and interviews are used to gather user data.'
+            },
+            'Interface Design': {
+                info: 'Designing intuitive user interfaces.',
+                example: 'Creating mockups with tools like Figma or Sketch.'
+            },
+            'Accessibility': {
+                info: 'Ensuring usability for all users, including those with disabilities.',
+                example: 'Using ARIA roles for screen readers.'
+            }
+        }
+    },
+    'Usability, HCI and User Interation Design': {
+        description: 'Study the design and use of interactive systems to improve the user experience.',
+        subtopics: {
+            'Usability Testing': {
+                info: 'Evaluating how easy and effective a system is for users.',
+                example: 'Using A/B testing to analyze user interactions.'
+            },
+            'User Interfaces': {
+                info: 'Creating interfaces that are intuitive and user-friendly.',
+                example: 'Designing for different platforms like mobile, web, and desktop.'
+            },
+            'Interaction Design': {
+                info: 'Designing how users interact with systems.',
+                example: 'Developing smooth navigation flows.'
+            },
+            'Cognitive Psychology in HCI': {
+                info: 'Understanding how psychological principles influence user interaction.',
+                example: 'Applying principles like memory retention and decision-making in interface design.'
+            },
+            'Ethics in HCI Design': {
+                info: 'Addressing ethical considerations in designing interactive systems.',
+                example: 'Ensuring data privacy and transparency in user interactions.'
+            },
+            'Prototyping and Usability Testing': {
+                info: 'Creating prototypes to test usability before full-scale development.',
+                example: 'Iterative testing through wireframes and usability sessions.'
+            },
+            'User Experience Research Methods': {
+                info: 'Using methods like ethnographic studies and usability testing to understand user needs.',
+                example: 'Conducting field studies to observe user behaviors.'
+            },
+            'Human-Computer Interaction Theories': {
+                info: 'Exploring theories that explain user interactions with computers.',
+                example: 'Applying theories like Norman’s model of user experience in design.'
+            },
+            'Interactive Systems': {
+                info: 'Designing systems that facilitate better user interactions.',
+                example: 'Implementing systems like chatbots or AI-driven support interfaces.'
+            },
+            'Human Factors in Design': {
+                info: 'Understanding how physical and psychological human attributes affect system design.',
+                example: 'Optimizing ergonomics in design for better usability.'
+            }
+        }
+    }
+};
+
+// Function to show content for selected lesson
+function showContent(subject, lesson) {
+    const contentArea = document.getElementById('content-area');
+    const lessonData = lessonDetails[lesson];
+
+    if (lessonData) {
+        const subtopicsHTML = Object.keys(lessonData.subtopics).map(subtopic => {
+            const { info, example } = lessonData.subtopics[subtopic];
+            return `<li><strong>${subtopic}</strong>: ${info} (Example: ${example})</li>`;
+        }).join('');
+        contentArea.innerHTML = `
+            <h3>${lesson}</h3>
+            <p>${lessonData.description}</p>
+            <h4>Subtopics:</h4>
+            <ul>${subtopicsHTML}</ul>
+        `;
+    } else {
+        contentArea.innerHTML = `<p>No content available for ${lesson}</p>`;
+    }
+}
+
+    </script>
+    
+
+</body>
+</html>

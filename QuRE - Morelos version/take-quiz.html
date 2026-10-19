@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Take Quiz</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<style>
+body {
+    
+    margin: 0;
+  
+    background-color: #f8f9fa;
+}
+
+header {
+    background-color: #007bff;
+    color: white;
+    padding: 10px 0;
+}
+
+.logo img {
+    height: 60px;
+}
+
+
+
+</style>
+<body>
+    <header>
+        <div class="logo">
+            <a href="index.html" class="logo-img"></a>
+        </div>
+        <nav class="navbar">
+            
+        
+            <div class="menu">
+                <a href="index.html">Home</a>
+        
+                <div class="dropdown">
+                    <a href="#">About</a>
+                    <div class="dropdown-content">
+                        <a href="about.html">About Us</a>
+                        <a href="team.html">Meet the Team</a>
+                        <a href="contact.html">Contact Us</a>
+                    </div>
+                </div>
+        
+                <div class="dropdown">
+                    <a href="#">Tools</a>
+                    <div class="dropdown-content">
+                        <a href="subjects.html">Take Quiz</a>
+                        <a href="quiz-maker.html">Make Quiz</a>
+                        <a href="reviewer.html">Reviewer</a>
+                        <a href="manage-quizzes.html">Manage Quizzes</a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <section id="quiz-section">
+        <h2 id="quiz-title"></h2>
+        <form id="quiz-form">
+            <!-- Questions will be inserted here dynamically -->
+        </form>
+        <button id="submit-btn">Submit Quiz</button>
+    </section>
+
+    <section id="info">
+        <div class="contact">
+            <h3>Contact Us</h3>
+            <p>Naga City, Philippines</p>
+            <p>+639123456789</p>
+            <p>QuRE.support@gmail.com</p>
+        </div>
+        <div class="about">
+            <h3>About Us</h3>
+            <p><a href="about.html">About QuRE</a></p>
+            <p><a href="Team.html">Meet the Team</a></p>
+        </div>
+    </section>
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2024 QuRe. All Rights Reserved.</p>
+            <ul class="socials">
+                <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+                <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+                <li><a href="#"><i class="fab fa-instagram"></i></a></li>
+                <li><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
+            </ul>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            let quiz = JSON.parse(localStorage.getItem('currentQuiz')); // Get the current quiz
+            if (quiz) {
+                document.getElementById('quiz-title').textContent = quiz.quizTitle;
+                
+                let quizForm = document.getElementById('quiz-form');
+                
+                quiz.questions.forEach((q, index) => {
+                    let questionHTML = `
+                        <div class="question">
+                            <h3>${q.question}</h3>
+                            ${q.options.map((option, i) => `
+                                <label>
+                                    <input type="radio" name="question${index}" value="answer${index}-${i + 1}">
+                                    ${option}
+                                </label><br>
+                            `).join('')}
+                        </div>
+                    `;
+                    quizForm.innerHTML += questionHTML;
+                });
+            }
+        });
+
+        // Handle quiz submission
+        document.getElementById('submit-btn').addEventListener('click', function() {
+            let quiz = JSON.parse(localStorage.getItem('currentQuiz')); // Get the current quiz again
+            if (!quiz) {
+                alert("No quiz loaded.");
+                return;
+            }
+
+            let totalQuestions = quiz.questions.length;
+            let correctAnswers = 0;
+
+            // Loop through each question and check the selected answer
+            quiz.questions.forEach((q, index) => {
+                let selectedAnswer = document.querySelector(input[name="question${index}"]:checked);
+                if (selectedAnswer && selectedAnswer.value === q.correctAnswer) {
+                    correctAnswers++;
+                }
+            });
+
+            // Calculate and store the score
+            let score = ${correctAnswers}/${totalQuestions};
+            let quizScores = JSON.parse(localStorage.getItem('quizScores')) || {};
+            quizScores[quiz.id] = score; // Save score using the quiz ID as the key
+            localStorage.setItem('quizScores', JSON.stringify(quizScores));
+
+            // Show the result to the user
+            alert(You got ${correctAnswers} out of ${totalQuestions} correct.);
+
+            // Redirect back to manage quizzes
+            window.location.href = 'manage-quizzes.html';
+        });
+    </script>
+</body>
+</html>
